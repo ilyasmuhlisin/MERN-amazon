@@ -9,6 +9,9 @@ import Badge from "react-bootstrap/Badge";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Helmet } from "react-helmet-async";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
+import { getError } from "../utils";
 
 // parameter 1 current state and paramter 2 action
 const reducer = (state, action) => {
@@ -45,7 +48,7 @@ function ProductScreen() {
         const result = await axios.get(`/api/products/slug/${slug}`);
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (err) {
-        dispatch({ type: "FETCH_FAIL", payload: err.message });
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
       // const result = await axios.get("/api/products");
       // setProducts(result.data);
@@ -55,9 +58,10 @@ function ProductScreen() {
   }, [slug]);
 
   return loading ? (
-    <div>Loading...</div>
+    <LoadingBox />
   ) : error ? (
-    <div>{error}</div>
+    // <div>{error}</div>
+    <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <div>
       <Row>
