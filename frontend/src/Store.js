@@ -7,7 +7,8 @@ const initialState = {
   cart: {
     // cartItems: [],
     cartItems: localStorage.getItem("cartItems")
-      ? JSON.parse(localStorage.getItem("cartItems"))
+      ? //mengambil string JSON dan mengubahnya menjadi objek JavaScript
+        JSON.parse(localStorage.getItem("cartItems"))
       : [],
   },
 };
@@ -25,7 +26,7 @@ function reducer(state, action) {
             item._id === existItem._id ? newItem : item
           )
         : [...state.cart.cartItems, newItem];
-        // localstorage punya 2 parameter 1 cartItem untuk key 2 nilai string
+      // localstorage punya 2 parameter 1 cartItem untuk key 2 nilai string
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
 

@@ -27,6 +27,7 @@ function Product(props) {
       type: "CART_ADD_ITEM",
       payload: { ...item, quantity },
     });
+    console.log(item);
   };
   return (
     <Card>
