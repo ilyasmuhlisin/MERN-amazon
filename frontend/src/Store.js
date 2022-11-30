@@ -4,7 +4,14 @@ import { createContext, useReducer } from "react";
 export const Store = createContext();
 
 const initialState = {
+  userInfo: localStorage.getItem("userInfo")
+    ? JSON.parse(localStorage.getItem("userInfo"))
+    : null,
+
   cart: {
+    shippingAddress: localStorage.getItem("shippingAddress")
+      ? JSON.parse(localStorage.getItem("shippingAddress"))
+      : {},
     // cartItems: [],
     cartItems: localStorage.getItem("cartItems")
       ? //mengambil string JSON dan mengubahnya menjadi objek JavaScript
@@ -45,6 +52,28 @@ function reducer(state, action) {
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
+    case "USER_SIGNIN":
+      // return data sebelumnya dan perbaruan
+      return { ...state, userInfo: action.payload };
+    case "USER_SIGNOUT":
+      return {
+        // menyimpan sebelumnya dan set userInfo ke 0
+        ...state,
+        userInfo: null,
+        cart: {
+          // array kosong to reset
+          cartItems: [],
+          shippingAddress: {},
+        },
+      };
+    case "SAVE_SHIPPING_ADDRESS":
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          shippingAddress: action.payload,
+        },
+      };
     default:
       return state;
   }

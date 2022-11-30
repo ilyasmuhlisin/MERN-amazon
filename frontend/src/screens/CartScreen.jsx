@@ -34,6 +34,7 @@ export default function CartScreen() {
   };
 
   const checkoutHandler = () => {
+    // auth user
     navigate("/signin?redirect=/shipping");
   };
 
