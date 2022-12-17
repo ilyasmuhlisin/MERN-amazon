@@ -12,6 +12,9 @@ const initialState = {
     shippingAddress: localStorage.getItem("shippingAddress")
       ? JSON.parse(localStorage.getItem("shippingAddress"))
       : {},
+    paymentMethod: localStorage.getItem("paymentMethod")
+      ? localStorage.getItem("paymentMethod")
+      : "",
     // cartItems: [],
     cartItems: localStorage.getItem("cartItems")
       ? //mengambil string JSON dan mengubahnya menjadi objek JavaScript
@@ -64,6 +67,7 @@ function reducer(state, action) {
           // array kosong to reset
           cartItems: [],
           shippingAddress: {},
+          paymentMethod: "",
         },
       };
     case "SAVE_SHIPPING_ADDRESS":
@@ -73,6 +77,11 @@ function reducer(state, action) {
           ...state.cart,
           shippingAddress: action.payload,
         },
+      };
+    case "SAVE_PAYMENT_METHOD":
+      return {
+        ...state,
+        cart: { ...state.cart, paymentMethod: action.payload },
       };
     default:
       return state;
