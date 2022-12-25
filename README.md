@@ -33,20 +33,20 @@
    2. update fetch data
    3. get state from usReducer
 6. Add bootstrap UI Framework
-    1. npm install react-bootstrap bootstrap
-    2. update App.js
+   1. npm install react-bootstrap bootstrap
+   2. update App.js
 7. Create Product and Rating Component
-    1. create Rating component
-    2. Create Product component
-    3. Use Rating component in Product component
+   1. create Rating component
+   2. Create Product component
+   3. Use Rating component in Product component
 8. Create Product Details Screen
-    1. fetch product from backend
-    2. create 3 columns for image, info and action
+   1. fetch product from backend
+   2. create 3 columns for image, info and action
 9. Create Loading and Message Component
-    1. create loading component
-    2. use spinner component
-    3. craete message component
-    4. create utils.js to define getError fuction
+   1. create loading component
+   2. use spinner component
+   3. craete message component
+   4. create utils.js to define getError fuction
 10. Create React Context For Add Item To Cart
     1. Create React Context
     2. define reducer
@@ -103,3 +103,6 @@
     1. show cart items, payment and address
     2. handle place order action
     3. create order create api
+24. Implement Place Order Action
+    1. handle place order action
+    2. create order create api
